@@ -1,0 +1,83 @@
+version: '3'
+networks:
+    all:
+      driver: bridge
+services:
+  security:
+    build: ./ABCJobs_BK_SecurityService
+    ports:
+      - "3000:5000"
+    environment:
+      DB_NAME: monitor_users
+      DB_HOST: databases
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      databases:
+        condition: service_healthy
+    networks:
+      - all
+  interview:
+    build: ./ABCJobs_BK_InterviewsService
+    ports:
+      - "3001:5000"
+    environment:
+      DB_NAME: monitor_interviews
+      DB_HOST: databases
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      USERS_PATH: security
+      USERS_PORT: 5000
+    depends_on:
+      databases:
+        condition: service_healthy
+    networks:
+      - all
+  itspecialist:
+    build: ./ABCJobs_BK_ItSpecialistsService
+    ports:
+      - "3002:5000"
+    environment:
+      DB_NAME: monitor_it_specialists
+      DB_HOST: databases
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+    depends_on:
+      databases:
+        condition: service_healthy
+    networks:
+      - all
+  companies:
+    build: ./companies
+    ports:
+      - "3003:5000"
+    environment:
+      DB_NAME: monitor_companies
+      DB_HOST: databases
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      USERS_PATH: security
+      USERS_PORT: 5000
+    depends_on:
+      databases:
+        condition: service_healthy
+    networks:
+      - all
+    
+  databases:
+    build: ./data_bases
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 5
+    networks:
+      - all
+  
