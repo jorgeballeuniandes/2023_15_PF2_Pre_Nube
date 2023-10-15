@@ -15,8 +15,9 @@ class Company(Model, Base):
   phone = Column(String)
   contact_name = Column(String)
   contact_phone = Column(String)
-
-  def __init__(self, companyId, name, email, address, country, dept, city, phone, contact_name, contact_phone):
+  userId = Column(Integer)
+  
+  def __init__(self, companyId, name, email, address, country, dept, city, phone, contact_name, contact_phone, userId):
     Model.__init__(self)
     self.companyId = companyId
     self.name = name
@@ -28,6 +29,7 @@ class Company(Model, Base):
     self.phone = phone
     self.contact_name = contact_name
     self.contact_phone = contact_phone
+    self.userId = userId
 
 class CompanySchema(Schema):
   id = fields.Number()
@@ -41,3 +43,4 @@ class CompanySchema(Schema):
   phone = fields.Number()
   contact_name = fields.Str()
   contact_phone = fields.Number()
+  userId = fields.Number()

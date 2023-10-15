@@ -13,7 +13,7 @@ class CreateCompany(BaseCommannd):
   def execute(self):
     try:
       posted_company = CompanySchema(
-        only=('companyId','name','email','address','country','dept','city', 'phone', 'contact_name', 'contact_phone')
+        only=('companyId','name','email','address','country','dept','city', 'phone', 'contact_name', 'contact_phone', 'userId')
       ).load(self.data)
       company = Company(**posted_company)
       session = Session()
