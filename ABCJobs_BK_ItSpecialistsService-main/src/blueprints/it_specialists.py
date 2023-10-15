@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request, Blueprint
 from ..commands.create_it_specialist import CreateItSpecialist
 from ..commands.get_it_specialist import GetItSpecialist
 from ..commands.get_it_specialists import GetItSpecialists
+from ..commands.get_it_specialist_by_user_id import GetItSpecialistByUserId
+from ..commands.public_create_it_specialist import PublicCreateItSpecialist
 from ..commands.authenticate import Authenticate
 from ..commands.reset import Reset
 
@@ -11,6 +13,12 @@ it_specialists_blueprint = Blueprint('it_specialists', __name__)
 def create():
     auth_info = Authenticate(auth_token()).execute()
     it_specialist = CreateItSpecialist(request.get_json(), auth_info['id']).execute()
+    return jsonify(it_specialist), 201
+
+@it_specialists_blueprint.route('/public/it_specialists', methods = ['POST'])
+def public_create():
+    auth_info = Authenticate(auth_token()).execute()
+    it_specialist = PublicCreateItSpecialist(request.get_json(), auth_info['id']).execute()
     return jsonify(it_specialist), 201
 
 @it_specialists_blueprint.route('/it_specialists', methods = ['GET'])

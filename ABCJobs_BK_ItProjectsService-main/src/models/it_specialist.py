@@ -2,16 +2,14 @@ from marshmallow import  Schema, fields
 from sqlalchemy import Column, DateTime, Integer, String
 from .model import Model, Base
 
-class ItSpecialist(Model, Base):
-  __tablename__ = 'it_specialists'
+class Project(Model, Base):
+  __tablename__ = 'projects'
 
-  userId = Column(Integer)
-  name = Column(String)
-  email = Column(String)
-  nationality = Column(String)
-  profession = Column(String)
-  speciality = Column(String)
-  profile = Column(String)
+  itSpecialistId = Column(Integer)
+  proyectId = Column(Integer)
+  companyId = Column(Integer)
+  date = Column(DateTime)
+  
 
   def __init__(self, userId, name, email, nationality, profession, speciality, profile):
     Model.__init__(self)
@@ -23,7 +21,7 @@ class ItSpecialist(Model, Base):
     self.speciality = speciality
     self.profile = profile
 
-class ItSpecialistSchema(Schema):
+class ProjectSchema(Schema):
   id = fields.Number()
   userId = fields.Number()
   name = fields.String()

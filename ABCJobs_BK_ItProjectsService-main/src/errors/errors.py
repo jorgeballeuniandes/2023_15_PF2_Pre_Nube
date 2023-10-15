@@ -18,13 +18,9 @@ class Unauthorized(ApiError):
     code = 401
     description = "Unauthorized"
 
-class ItSpecialistNotFoundError(ApiError):
+class ProjectNotFoundError(ApiError):
     code = 404
-    description = "It specialist does not exist"
-
-class ItSpecialistUserIdAlreadyExistis(ApiError):
-    code = 409
-    description = "It Specialists with the same User Id already exists"
+    description = "Route does not exist"
 
 class ExternalError(ApiError):
     code = 422 # Default

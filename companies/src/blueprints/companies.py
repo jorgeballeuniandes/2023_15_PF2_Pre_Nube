@@ -27,7 +27,7 @@ def show(id):
     return jsonify(company)
 
 @companies_blueprint.route('/companies/user/<id>', methods = ['GET'])
-def show(id):
+def show_by_user_id(id):
     Authenticate(auth_token()).execute()
     company = GetCompanybyUserId(id).execute()
     return jsonify(company)

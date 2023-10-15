@@ -3,22 +3,18 @@ from ..models.it_specialist import ItSpecialist, ItSpecialistSchema
 from ..session import Session
 from ..errors.errors import InvalidParams, ItSpecialistNotFoundError
 
-class GetItSpecialist(BaseCommannd):
-  def __init__(self, it_specialist_id):
-    if self.is_integer(it_specialist_id):
-      self.it_specialist_id = int(it_specialist_id)
-    elif self.is_float(it_specialist_id):
-      self.it_specialist_id = int(float(it_specialist_id))
+class GetItSpecialistByUserId(BaseCommannd):
+  def __init__(self, user_id_):
+    if self.is_integer(user_id_):
+      self.user_id_ = int(user_id_)
+    elif self.is_float(user_id_):
+      self.user_id_ = int(float(user_id_))
     else:
       raise InvalidParams()
 
   def execute(self):
     session = Session()
-    if len(session.query(ItSpecialist).filter_by(id=self.it_specialist_id).all()) <= 0:
-      session.close()
-      raise ItSpecialistNotFoundError()
-
-    it_specialist = session.query(ItSpecialist).filter_by(id=self.it_specialist_id).one()
+    it_specialist = session.query(ItSpecialist).filter_by(userId=self.user_id_).first()
     schema = ItSpecialistSchema()
     it_specialist = schema.dump(it_specialist)
 

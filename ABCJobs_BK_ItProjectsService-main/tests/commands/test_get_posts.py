@@ -1,44 +1,44 @@
-from src.commands.get_it_specialists import Getit_specialists
-from src.commands.create_it_specialist import CreateItSpecialist
+from src.commands.get_projects import Getprojects
+from src.commands.create_post import CreateProject
 from src.session import Session, engine
 from src.models.model import Base
-from src.models.it_specialist import ItSpecialist
+from src.models.project import Project
 from src.errors.errors import InvalidParams
 from datetime import datetime, timedelta
 
-class TestGetit_specialists():
+class TestGetprojects():
   def setup_method(self):
     Base.metadata.create_all(engine)
     self.session = Session()
-    self.it_specialist_data = {
+    self.post_data = {
       'routeId': 1,
       'plannedStartDate': datetime.now().date().isoformat(),
       'plannedEndDate': (datetime.now() + timedelta(days=2)).date().isoformat()
     }
     self.userId = 1
-    self.it_specialist = CreateItSpecialist(self.it_specialist_data, self.userId).execute()
+    self.project = CreateProject(self.post_data, self.userId).execute()
 
-  def test_get_it_specialists(self):
+  def test_get_projects(self):
     data = {
       'when': datetime.now().date().isoformat(),
-      'route': self.it_specialist_data['routeId'],
+      'route': self.post_data['routeId'],
       'filter': 'me'
     }
-    it_specialists = Getit_specialists(data, self.userId).execute()
-    assert len(it_specialists) == 1
+    projects = Getprojects(data, self.userId).execute()
+    assert len(projects) == 1
 
     data['when'] = (datetime.now() + timedelta(days=3)).date().isoformat()
-    it_specialists = Getit_specialists(data, self.userId).execute()
-    assert len(it_specialists) == 0
+    projects = Getprojects(data, self.userId).execute()
+    assert len(projects) == 0
 
-  def test_get_it_specialists_invalid_dates(self):
+  def test_get_projects_invalid_dates(self):
     try:
       data = {
         'when': 'invalid',
-        'route': self.it_specialist_data['routeId'],
+        'route': self.post_data['routeId'],
         'filter': 'me'
       }
-      Getit_specialists(data, self.userId).execute()
+      Getprojects(data, self.userId).execute()
       assert False
     except InvalidParams:
       assert True

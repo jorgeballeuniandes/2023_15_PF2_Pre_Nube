@@ -1,10 +1,10 @@
 from .base_command import BaseCommannd
-from ..models.it_specialist import ItSpecialist, ItSpecialistSchema
+from ..models.project import Project, ProjectSchema
 from ..session import Session
 from ..errors.errors import IncompleteParams, InvalidDates
 from datetime import datetime
 
-class CreateItSpecialist(BaseCommannd):
+class CreateProject(BaseCommannd):
   def __init__(self, data, userId = None):
     self.data = data
     if userId != None:
@@ -12,22 +12,22 @@ class CreateItSpecialist(BaseCommannd):
    
   def execute(self):
     try:
-      posted_it_specialist = ItSpecialistSchema(
+      posted_project = ProjectSchema(
         only=('userId','name','email','nationality','profession','speciality','profile')
       ).load(self.data)
-      it_specialist = ItSpecialist(**posted_it_specialist)
+      project = Project(**posted_project)
 
 
 
       session = Session()
 
-      session.add(it_specialist)
+      session.add(project)
       session.commit()
 
-      new_it_specialist = ItSpecialistSchema().dump(it_specialist)
+      new_project = ProjectSchema().dump(project)
       session.close()
 
-      return new_it_specialist
+      return new_project
     except TypeError:
       raise IncompleteParams
 
