@@ -33,6 +33,12 @@ def show(id):
     it_specialist = GetItSpecialist(id).execute()
     return jsonify(it_specialist)
 
+@it_specialists_blueprint.route('/it_specialists/byUserId/<userId>', methods = ['GET'])
+def show_by_user_id(userId):
+    Authenticate(auth_token()).execute()
+    it_specialist = GetItSpecialistByUserId(userId).execute()
+    return jsonify(it_specialist)
+
 @it_specialists_blueprint.route('/it_specialists/ping', methods = ['GET'])
 def ping():
     return 'pong'

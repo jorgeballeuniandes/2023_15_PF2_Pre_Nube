@@ -10,5 +10,7 @@ CREATE DATABASE monitor_it_specialists;
 CREATE DATABASE monitor_it_specialists_test;
 CREATE DATABASE monitor_companies;
 CREATE DATABASE monitor_companies_test;
+CREATE DATABASE monitor_projects;
+CREATE DATABASE monitor_projects_test;
 
 

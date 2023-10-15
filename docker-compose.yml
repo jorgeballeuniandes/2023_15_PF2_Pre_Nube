@@ -69,7 +69,23 @@ services:
         condition: service_healthy
     networks:
       - all
-    
+  projects:
+    build: ./ABCJobs_BK_ItProjectsService-main
+    ports:
+      - "3004:5000"
+    environment:
+      DB_NAME: monitor_projects
+      DB_HOST: databases
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      USERS_PATH: security
+      USERS_PORT: 5000
+    depends_on:
+      databases:
+        condition: service_healthy
+    networks:
+      - all    
   databases:
     build: ./data_bases
     environment:

@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.create_company import CreateCompany
 from ..commands.get_company import GetCompany
-from ..commands.get_company_by_userId import GetCompanybyUserId
+from ..commands.get_company_by_userId import GetCompanyByUserId
 from ..commands.get_companies import GetCompanies
 from ..commands.authenticate import Authenticate
 from ..commands.reset import Reset
@@ -26,10 +26,10 @@ def show(id):
     company = GetCompany(id).execute()
     return jsonify(company)
 
-@companies_blueprint.route('/companies/user/<id>', methods = ['GET'])
-def show_by_user_id(id):
+@companies_blueprint.route('/companies/byUserId/<userId>', methods = ['GET'])
+def show_by_user_id(userId):
     Authenticate(auth_token()).execute()
-    company = GetCompanybyUserId(id).execute()
+    company = GetCompanyByUserId(userId).execute()
     return jsonify(company)
 
 @companies_blueprint.route('/companies/ping', methods = ['GET'])

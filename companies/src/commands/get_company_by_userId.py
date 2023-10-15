@@ -3,22 +3,18 @@ from ..models.companies import Company, CompanySchema
 from ..session import Session
 from ..errors.errors import InvalidParams, CompanyNotFoundError
 
-class GetCompanybyUserId(BaseCommannd):
-  def __init__(self, userId):
-    if self.is_integer(userId):
-      self.userId = int(userId)
-    elif self.is_float(userId):
-      self.userId = int(float(userId))
+class GetCompanyByUserId(BaseCommannd):
+  def __init__(self, user_id):
+    if self.is_integer(user_id):
+      self.user_id = int(user_id)
+    elif self.is_float(user_id):
+      self.user_id = int(float(user_id))
     else:
       raise InvalidParams()
 
   def execute(self):
     session = Session()
-    if len(session.query(Company).filter_by(userId=self.userId).all()) <= 0:
-      session.close()
-      raise CompanyNotFoundError()
-
-    company = session.query(Company).filter_by(userId=self.userId).one()
+    company = session.query(Company).filter_by(userId=self.user_id).first()
     schema = CompanySchema()
     company = schema.dump(company)
 

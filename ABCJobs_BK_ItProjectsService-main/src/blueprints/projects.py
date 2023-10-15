@@ -3,6 +3,7 @@ from ..commands.create_project import CreateProject
 from ..commands.get_project import GetProject
 from ..commands.get_projects import GetProjects
 from ..commands.authenticate import Authenticate
+from ..commands.get_project_by_company_id import GetProjectsByCompnayId
 from ..commands.reset import Reset
 
 projects_blueprint = Blueprint('projects', __name__)
@@ -23,6 +24,12 @@ def index():
 def show(id):
     Authenticate(auth_token()).execute()
     project = GetProject(id).execute()
+    return jsonify(project)
+
+@projects_blueprint.route('/projects/byCompanyId/<companyId>', methods = ['GET'])
+def show_by_company_id(companyId):
+    Authenticate(auth_token()).execute()
+    project = GetProjectsByCompnayId(companyId).execute()
     return jsonify(project)
 
 @projects_blueprint.route('/projects/ping', methods = ['GET'])

@@ -13,7 +13,7 @@ class CreateProject(BaseCommannd):
   def execute(self):
     try:
       posted_project = ProjectSchema(
-        only=('userId','name','email','nationality','profession','speciality','profile')
+        only=('userId', 'companyId', 'projectName', 'projectLeader', 'projectLeaderPhone', 'Country', 'City', 'Department')
       ).load(self.data)
       project = Project(**posted_project)
 

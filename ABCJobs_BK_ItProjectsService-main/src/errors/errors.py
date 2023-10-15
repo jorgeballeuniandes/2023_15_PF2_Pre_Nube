@@ -20,7 +20,7 @@ class Unauthorized(ApiError):
 
 class ProjectNotFoundError(ApiError):
     code = 404
-    description = "Route does not exist"
+    description = "Project does not exist"
 
 class ExternalError(ApiError):
     code = 422 # Default
