@@ -3,7 +3,7 @@ from ..models.companies import Company, CompanySchema
 from ..session import Session
 from ..errors.errors import InvalidParams, CompanyNotFoundError
 
-class GetCompany(BaseCommannd):
+class GetCompanybyUserId(BaseCommannd):
   def __init__(self, userId):
     if self.is_integer(userId):
       self.userId = int(userId)
