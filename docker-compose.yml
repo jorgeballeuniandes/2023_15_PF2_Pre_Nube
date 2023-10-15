@@ -4,7 +4,7 @@ networks:
       driver: bridge
 services:
   security:
-    build: ./ABCJobs_BK_SecurityService
+    build: ./ABCJobs_BK_SecurityService-main
     ports:
       - "3000:5000"
     environment:
@@ -19,7 +19,7 @@ services:
     networks:
       - all
   interview:
-    build: ./ABCJobs_BK_InterviewsService
+    build: ./ABCJobs_BK_InterviewsService-main
     ports:
       - "3001:5000"
     environment:
@@ -36,7 +36,7 @@ services:
     networks:
       - all
   itspecialist:
-    build: ./ABCJobs_BK_ItSpecialistsService
+    build: ./ABCJobs_BK_ItSpecialistsService-main
     ports:
       - "3002:5000"
     environment:
