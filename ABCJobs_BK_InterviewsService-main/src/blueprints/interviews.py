@@ -12,7 +12,6 @@ def create():
     auth_info = Authenticate(auth_token()).execute()
     interview = CreateInterview(request.get_json()).execute()
     return jsonify(interview), 201
-
 @interviews_blueprint.route('/interviews', methods = ['GET'])
 def index():
     auth_info = Authenticate(auth_token()).execute()
