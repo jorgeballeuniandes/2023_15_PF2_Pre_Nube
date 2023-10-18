@@ -6,9 +6,9 @@ from datetime import datetime
 
 
 class UpdateCompanyId(BaseCommannd):
-  def __init__(self, newid,companyId, token = None):
-    self.newid=newid
-    self.companyId = companyId
+  def __init__(self, companyId,userId, token = None):
+    self.companyId=companyId
+    self.userId = userId
     if token == None or token == "":
       raise IncompleteParams()
     else:
@@ -26,9 +26,9 @@ class UpdateCompanyId(BaseCommannd):
     if user.expireAt < datetime.now():
       session.close()
       raise Unauthorized()
-    if len (session.query(User).filter_by(companyId = self.companyId).all()) == 1: 
-      user = session.query(User).filter_by(companyId=self.companyId).one() 
-      user.companyId = self.newid
+    if len (session.query(User).filter_by(id = self.userId).all()) == 1: 
+      user = session.query(User).filter_by(id=self.userId).one() 
+      user.companyId = self.companyId
       session.commit()
     else:
       raise Unauthorized()

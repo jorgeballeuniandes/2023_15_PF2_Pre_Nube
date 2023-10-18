@@ -25,10 +25,11 @@ def show():
 def update():
     data = request.get_json()
     print(data)
-    newid= data["newid"] 
+    userId= data["userId"] 
+    print(userId)
     companyId= data ["companyId"]
-    print(newid)
-    user = UpdateCompanyId(newid,companyId,auth_token()).execute()
+    print(companyId)
+    user = UpdateCompanyId(companyId,userId,auth_token()).execute()
     return jsonify(user)
 
 @security_blueprint.route('/', methods = ['GET'])
