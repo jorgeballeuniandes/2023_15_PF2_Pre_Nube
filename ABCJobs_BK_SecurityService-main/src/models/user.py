@@ -1,5 +1,5 @@
 from marshmallow import  Schema, fields
-from sqlalchemy import Column, String, DateTime
+from sqlalchemy import Column, String, DateTime, Double
 from .model import Model, Base
 import bcrypt
 from datetime import datetime, timedelta
@@ -15,6 +15,7 @@ class User(Model, Base):
   token = Column(String)
   expireAt = Column(DateTime)
   role = Column(String)
+  companyId = Column(Double)
 
   def __init__(self, username, email, password,role):
     Model.__init__(self)
@@ -23,7 +24,7 @@ class User(Model, Base):
     self.role=role
     password = password.encode('utf-8')
     salt = bcrypt.gensalt()
-
+    self.companyId= None
     self.password = bcrypt.hashpw(password, salt).decode()
     self.salt = salt.decode()
     self.set_token()
@@ -42,6 +43,7 @@ class UserSchema(Schema):
   expireAt = fields.DateTime()
   createdAt = fields.DateTime()
   role =fields.Str()
+  companyId = fields.Float()
 
 class UserJsonSchema(Schema):
   id = fields.Number()
@@ -51,3 +53,6 @@ class UserJsonSchema(Schema):
   expireAt = fields.DateTime()
   createdAt = fields.DateTime()
   role = fields.Str()
+  companyId = fields.Float()
+  
+  
