@@ -26,8 +26,9 @@ def update():
     data = request.get_json()
     print(data)
     newid= data["newid"] 
+    companyId= data ["companyId"]
     print(newid)
-    user = UpdateCompanyId(newid,auth_token()).execute()
+    user = UpdateCompanyId(newid,companyId,auth_token()).execute()
     return jsonify(user)
 
 @security_blueprint.route('/', methods = ['GET'])
