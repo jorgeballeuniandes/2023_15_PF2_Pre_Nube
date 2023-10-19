@@ -4,6 +4,7 @@ from ..commands.get_it_specialist_document import GetItSpecialistDocument
 from ..commands.get_it_specialist_documents import GetItSpecialistDocuments
 from ..commands.get_it_specialist_documents_by_it_specialist_id import GetItSpecialistDocumentsByItSpecialistId
 from ..commands.public_create_it_specialist_document import PublicCreateItSpecialistDocument
+from ..commands.upload_it_specialist_document import UploadItSpecialistDocument
 from ..commands.authenticate import Authenticate
 from ..commands.reset import Reset
 
@@ -20,6 +21,12 @@ def public_create():
     auth_info = Authenticate(auth_token()).execute()
     it_specialist_document = PublicCreateItSpecialistDocument(request.get_json(), auth_info['id']).execute()
     return jsonify(it_specialist_document), 201
+
+@it_specialist_documents_blueprint.route('/upload_document', methods = ['POST'])
+def upload():
+    Authenticate(auth_token()).execute()
+    response = UploadItSpecialistDocument().execute()
+    return jsonify(response), 201
 
 @it_specialist_documents_blueprint.route('/it_specialist_documents', methods = ['GET'])
 def index():

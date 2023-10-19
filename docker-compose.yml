@@ -98,10 +98,10 @@ services:
       DB_PASSWORD: postgres
       USERS_PATH: security
       USERS_PORT: 5000
-      S3_ACCESS_KEY: AKIASN2MDRMQMEZXNDHU
-      S3_SECRET_ACCESS_KEY: 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
+      S3_ACCESS_KEY: AKIASN2MDRMQPTE33RE4
+      S3_SECRET_ACCESS_KEY: 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
       S3_REGION: use-east-1
-      S3_BUCKET_NAME: abc-jobs-it-specilists-documents
+      S3_BUCKET_NAME: abc-jobs-documentos
       S3_FOLDER_NAME: it_specialists_documents
       S3_INNER_FILE_NAME: isdf_
     depends_on:
