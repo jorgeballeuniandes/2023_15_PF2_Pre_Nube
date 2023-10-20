@@ -18,7 +18,7 @@ class SessionConfig():
 
     base_config = {
       'host': os.environ['DB_HOST'] if 'DB_HOST' in os.environ else 'localhost',
-      'port': os.environ['DB_PORT'] if 'DB_PORT' in os.environ else '5432',
+      'port': os.environ['DB_PORT'] if 'DB_PORT' in os.environ else '5435',
       'user': os.environ['DB_USER'] if 'DB_USER' in os.environ else 'postgres',
       'password': os.environ['DB_PASSWORD'] if 'DB_PASSWORD' in os.environ else 'postgres',
       'db': db_name

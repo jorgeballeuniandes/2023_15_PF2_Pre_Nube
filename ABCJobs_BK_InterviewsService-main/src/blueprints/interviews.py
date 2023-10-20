@@ -10,12 +10,12 @@ interviews_blueprint = Blueprint('interviews', __name__)
 @interviews_blueprint.route('/interviews', methods = ['POST'])
 def create():
     auth_info = Authenticate(auth_token()).execute()
-    interview = CreateInterview(request.get_json()).execute()
+    interview = CreateInterview(request.get_json(), auth_token()).execute()
     return jsonify(interview), 201
 @interviews_blueprint.route('/interviews', methods = ['GET'])
 def index():
     auth_info = Authenticate(auth_token()).execute()
-    interviews = GetInterviews(request.args.to_dict()).execute()
+    interviews = GetInterviews().execute()
     return jsonify(interviews)
 
 @interviews_blueprint.route('/interviews/<id>', methods = ['GET'])

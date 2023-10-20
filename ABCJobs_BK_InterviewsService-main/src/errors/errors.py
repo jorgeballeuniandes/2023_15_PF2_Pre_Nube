@@ -20,7 +20,11 @@ class Unauthorized(ApiError):
 
 class InterviewNotFoundError(ApiError):
     code = 404
-    description = "Route does not exist"
+    description = "Interview does not exist"
+
+class ParentNotFoundError(ApiError):
+    code = 404
+    description = ""
 
 class ExternalError(ApiError):
     code = 422 # Default
