@@ -11,7 +11,7 @@ class ValidateItSpecialist(BaseCommannd):
 
   def execute(self):
     host = os.environ['IT_SPECIALIST_PATH'] if 'IT_SPECIALIST_PATH' in os.environ else 'localhost'
-    port = os.environ['IT_SPECIALIST_PORT'] if 'IT_SPECIALIST_PORT' in os.environ else 3000
+    port = os.environ['IT_SPECIALIST_PORT'] if 'IT_SPECIALIST_PORT' in os.environ else 3002
     base_path = f'http://{host}:{port}'
     response = requests.get(
       f'{base_path}/public/me',
