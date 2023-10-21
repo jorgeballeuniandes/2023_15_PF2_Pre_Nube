@@ -1,17 +1,19 @@
 from flask import Flask, jsonify, request, Blueprint
 from ..commands.create_company import CreateCompany
 from ..commands.get_company import GetCompany
-from ..commands.get_company_by_userId import GetCompanyByUserId
 from ..commands.get_companies import GetCompanies
 from ..commands.authenticate import Authenticate
 from ..commands.reset import Reset
+
+import requests
+import os
 
 companies_blueprint = Blueprint('companies', __name__)
 
 @companies_blueprint.route('/companies', methods = ['POST'])
 def create():
     auth_info = Authenticate(auth_token()).execute()
-    company = CreateCompany(request.get_json(), auth_info['id']).execute()
+    company = CreateCompany(data= request.get_json(), userId = auth_info['id'], token = auth_token()).execute()
     return jsonify(company), 201
 
 @companies_blueprint.route('/companies', methods = ['GET'])
@@ -24,12 +26,6 @@ def index():
 def show(id):
     Authenticate(auth_token()).execute()
     company = GetCompany(id).execute()
-    return jsonify(company)
-
-@companies_blueprint.route('/companies/byUserId/<userId>', methods = ['GET'])
-def show_by_user_id(userId):
-    Authenticate(auth_token()).execute()
-    company = GetCompanyByUserId(userId).execute()
     return jsonify(company)
 
 @companies_blueprint.route('/companies/ping', methods = ['GET'])

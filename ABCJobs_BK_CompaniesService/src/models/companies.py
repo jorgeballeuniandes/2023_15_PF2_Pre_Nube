@@ -5,7 +5,7 @@ from .model import Model, Base
 class Company(Model, Base):
   __tablename__ = 'companies'
 
-  companyId = Column(Integer)
+  companyId = Column(Integer, primary_key=True)
   name = Column(String)
   email = Column(String)
   address = Column(String)
@@ -15,11 +15,9 @@ class Company(Model, Base):
   phone = Column(String)
   contact_name = Column(String)
   contact_phone = Column(String)
-  userId = Column(Integer)
   
-  def __init__(self, companyId, name, email, address, country, dept, city, phone, contact_name, contact_phone, userId):
+  def __init__(self, name, email, address, country, dept, city, phone, contact_name, contact_phone):
     Model.__init__(self)
-    self.companyId = companyId
     self.name = name
     self.email = email
     self.address = address
@@ -29,10 +27,8 @@ class Company(Model, Base):
     self.phone = phone
     self.contact_name = contact_name
     self.contact_phone = contact_phone
-    self.userId = userId
 
 class CompanySchema(Schema):
-  id = fields.Number()
   companyId = fields.Number()
   name = fields.Str()
   email = fields.Str()
@@ -43,4 +39,3 @@ class CompanySchema(Schema):
   phone = fields.Number()
   contact_name = fields.Str()
   contact_phone = fields.Number()
-  userId = fields.Number()
