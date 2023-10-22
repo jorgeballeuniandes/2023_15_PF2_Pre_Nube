@@ -12,36 +12,27 @@ class TestCreateItSpecialist():
 
   def test_create_it_specialist(self):
     data = {
-      'routeId': 1,
-      'plannedStartDate': datetime.now().date().isoformat(),
-      'plannedEndDate': (datetime.now() + timedelta(days=2)).date().isoformat()
+      'name': "Juan",
+      'email': "Juan@gmail.com",
+      'nationality': "Colombia",
+      'profession': "Developer",
+      'speciality': ".NET Junior Developer",
+      'profile': "Great developer"      
     }
     userId = 1
     it_specialist = CreateItSpecialist(data, userId).execute()
-
-    assert it_specialist['routeId'] == data['routeId']
     assert it_specialist['userId'] == userId
-    assert 'plannedStartDate' in it_specialist
-    assert 'plannedEndDate' in it_specialist
-
+    assert it_specialist['name'] == data['name']
+    assert it_specialist['email'] == data['email']
+    assert it_specialist['nationality'] == data['nationality']
+    assert it_specialist['profession'] == data['profession']
+    assert it_specialist['profile'] == data['profile']
+    
   def test_create_it_specialist_missing_fields(self):
     try:
       CreateItSpecialist({}).execute()
       assert False
     except IncompleteParams:
-      assert True
-
-  def test_create_it_specialist_invalid_dates(self):
-    try:
-      data = {
-        'routeId': 1,
-        'plannedStartDate': (datetime.now() + timedelta(days=2)).date().isoformat(),
-        'plannedEndDate': datetime.now().date().isoformat()
-      }
-      userId = 1
-      CreateItSpecialist(data, userId).execute()
-      assert False
-    except InvalidDates:
       assert True
 
   def teardown_method(self):

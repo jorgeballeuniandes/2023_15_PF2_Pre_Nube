@@ -24,7 +24,7 @@ def public_create():
 @it_specialists_blueprint.route('/it_specialists', methods = ['GET'])
 def index():
     auth_info = Authenticate(auth_token()).execute()
-    it_specialists = GetItSpecialists(request.args.to_dict(), auth_info['id']).execute()
+    it_specialists = GetItSpecialists().execute()
     return jsonify(it_specialists)
 
 @it_specialists_blueprint.route('/it_specialists/<id>', methods = ['GET'])

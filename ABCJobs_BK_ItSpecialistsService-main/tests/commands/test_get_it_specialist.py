@@ -12,9 +12,13 @@ class TestGetItSpecialist():
     self.session = Session()
 
     data = {
-      'routeId': 1,
-      'plannedStartDate': datetime.now().date().isoformat(),
-      'plannedEndDate': (datetime.now() + timedelta(days=2)).date().isoformat()
+              "userId":1,
+              "name":"juan",
+              "email":"juan@gmail.com",
+              "nationality":"Colombia",
+              "profession":"Developer",
+              "speciality":".NET Junior Developer",
+              "profile":"Great developer"
     }
     userId = 1
     self.it_specialist = CreateItSpecialist(data, userId).execute()
@@ -24,8 +28,12 @@ class TestGetItSpecialist():
 
     assert it_specialist['id'] == self.it_specialist['id']
     assert it_specialist['userId'] == self.it_specialist['userId']
-    assert it_specialist['plannedStartDate'] == self.it_specialist['plannedStartDate']
-    assert it_specialist['plannedEndDate'] == self.it_specialist['plannedEndDate']
+    assert it_specialist['name'] == self.it_specialist['name']
+    assert it_specialist['email'] == self.it_specialist['email']
+    assert it_specialist['nationality'] == self.it_specialist['nationality']
+    assert it_specialist['profession'] == self.it_specialist['profession']
+    assert it_specialist['speciality'] == self.it_specialist['speciality']
+    assert it_specialist['profile'] == self.it_specialist['profile']
 
   def test_get_it_specialist_invalid_id(self):
     try:
