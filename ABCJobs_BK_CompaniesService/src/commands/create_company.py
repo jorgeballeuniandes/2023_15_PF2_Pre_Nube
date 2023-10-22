@@ -18,6 +18,7 @@ class CreateCompany(BaseCommannd):
       posted_company = CompanySchema(
         only=('name','email','address','country','dept','city', 'phone', 'contact_name', 'contact_phone')
       ).load(self.data)
+      
       company = Company(**posted_company)
       session = Session()
 
@@ -31,7 +32,7 @@ class CreateCompany(BaseCommannd):
 
       new_post = CompanySchema().dump(company)
 
-      UpdateUserCompanyId(token = self.token, companyId = new_post['companyId'], userId = self.userId).execute()
+      #UpdateUserCompanyId(token = self.token, companyId = new_post['companyId'], userId = self.userId).execute()
 
       session.close()
 
