@@ -5,8 +5,11 @@ from ..commands.get_it_specialist_documents import GetItSpecialistDocuments
 from ..commands.get_it_specialist_documents_by_it_specialist_id import GetItSpecialistDocumentsByItSpecialistId
 from ..commands.public_create_it_specialist_document import PublicCreateItSpecialistDocument
 from ..commands.upload_it_specialist_document import UploadItSpecialistDocument
+from ..commands.get_all_docs_in_folder import GetAllDocsInFolder
 from ..commands.authenticate import Authenticate
+from ..commands.upload_it_specialist_doc import UploadItSpecialistDoc
 from ..commands.reset import Reset
+from ..commands.download_file_by_id import DownloadFileById
 
 it_specialist_documents_blueprint = Blueprint('it_specialist_documents', __name__)
 
@@ -28,11 +31,29 @@ def upload():
     response = UploadItSpecialistDocument().execute()
     return jsonify(response), 201
 
+@it_specialist_documents_blueprint.route('/upload_doc', methods = ['POST'])
+def upload_doc():
+    Authenticate(auth_token()).execute()
+    response = UploadItSpecialistDoc().execute()
+    return jsonify(response), 201
+
+@it_specialist_documents_blueprint.route('/download_doc/<doc_name>', methods = ['GET'])
+def download_doc(doc_name):
+    # Authenticate(auth_token()).execute()
+    response = DownloadFileById(doc_name).execute()
+    return jsonify(response), 201
+
 @it_specialist_documents_blueprint.route('/it_specialist_documents', methods = ['GET'])
 def index():
     auth_info = Authenticate(auth_token()).execute()
     it_specialist_documents = GetItSpecialistDocuments(request.args.to_dict(), auth_info['id']).execute()
     return jsonify(it_specialist_documents)
+
+@it_specialist_documents_blueprint.route('/it_specialist_files', methods = ['GET'])
+def get_all_files_in_folder():
+    auth_info = Authenticate(auth_token()).execute()
+    it_specialist_documents_files = GetAllDocsInFolder().execute()
+    return jsonify(it_specialist_documents_files)
 
 @it_specialist_documents_blueprint.route('/it_specialist_documents/<id>', methods = ['GET'])
 def show(id):

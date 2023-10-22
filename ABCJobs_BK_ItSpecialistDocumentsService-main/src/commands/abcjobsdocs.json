@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "abcjobsdocs",
+  "private_key_id": "843d71f05b4ee604eb616f6f8ccf300f4cea5098",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDEbSWDi4x8NTHK\n92f7KfVgnPbPSLs/kmmXW3qN+ZbZpBUEfUYauk9Somxn+Y2jZjnLSjGmW3h06foE\n7BEgTteWY0mvbUu2bFytFOxoKmfkofUS5E8pHpX7KbxZvFRqcpx9xBmJlMr5JqKE\n19H0aUXERz/kFagqxvsbKse8GGy9VSv7aE2Q+Ea/W+9igsK8+/1J5npBde8eJLdi\nm6XZQx0isERhtG4daYqeYt40mlIoaP4xmDPlyP9iE/MLyMabAk+eLDiGwqOCoawi\n+h4FITtQOilT9EJ6zjjDYu/yn0AJR9esYysGPGa9HmcOjL3A2XYaXoKIWExAZj5v\nBoMi0o/lAgMBAAECggEADdWRG5FvyMy3T8/6fRRQsagEcwdwlrLhaHVbLZYrU3NM\nvqbzEc1W6l9BqtYG7X/06JY2ZnzRQEy9XOzibOfYo8Ek7qvQNg4uPct4NgLsk8v7\nVoQJdkAu+IRRPXG38VJWpr3xvYCjBga8UgZgRWpHrWIGRDJpSHAAvgJWlG8U84Wl\nQQJu47u7ylxnroOQLoFJ8wF6nNd8Fbau7Sduwq32NgUe2AuFWLUkqOdscn8dvAvd\nvKT8fxEzhl5WX92KUGX0ToL9/L5DSsgGuwQ4J6kdct275QsLypR2JavjcTtD+TnF\nflQEDN4y8OXTEuXG7s/aL1PPUD5mr4uGqdbwD/lz6QKBgQDuNT+vxxlGdNt4v7wV\nY7ds/Nyb3iAXRDEwyVJlAMkVN/xysY5S5un9FXMfBtItK145FBN3NRI1kgrB6v8+\nnQbFVsbOFayynzkxVgSYRi5uQd2Gz5oG5PcI9c++0pPLDkV5VN9Mz5lfg9q7bsN8\nlukYRMP06+33h2wvNJFUrwLf3QKBgQDTGP677E5sbGDgEvn/I03+qxtG/Gfi57R1\nGHgN6UFsgzSN+Swk0qquoSCW7nfWDn5EsRroQMCgthLF/c8jBsW3bVRjkLL+ix9L\n6zPhWTc1KOsMKEK51pQpbm1t/QXNY0rfkD0XTe5XvFWu8Iib2oPXRd+fpapoW/Ru\nr7aXPUbzqQKBgCiu7X6e+YEgCi/YR0475qL1mNQCHub6XZBggfMALFe0ZShNjOo5\nx/LSjAPbjV/rjT8gX6a3aLG/jJjMAuX1uadQh8nAx+sF6KW1dDlxmxJ3q1cP89WD\nm3FrUhzcKCPA/zqWtUCQIDjA80WZyEdqGstrSzB0bwMcnOx/BOc6sLn9AoGAAS6f\npo/BNKw6sqaIjdw1wJpWscQSFNw1T36OlY1b1264qZ7el2oymH3Af/ff5ev42wue\n2fQa4AuE+WTddxW/n7JWCaSyy+gdicBMbxOf0oVjI5NKJF5GQCElLbt//9FxhuT4\n4puGHSmp1Sv1p+HGYTs78FnuJV12dfQ38oreTdkCgYA2q/rZZMdLXV0n/yS3oE9P\na6yXd4S/RDLEdDmEW1tH581iD/pH70papqnvklWNon23rHboCn0ogkwltCOMOwFR\nbOX9h8FQlnFNy+ueJMsioaw2XwFTMQAtetWMapY7+RimTdk2byK7UxWG0f05q2bj\ngDGHapdKRWnkR8kSQ2OWpw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "drive-admin@abcjobsdocs.iam.gserviceaccount.com",
+  "client_id": "113111464038101114076",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/drive-admin%40abcjobsdocs.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
