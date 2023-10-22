@@ -14,11 +14,11 @@ class GetCompany(BaseCommannd):
 
   def execute(self):
     session = Session()
-    if len(session.query(Company).filter_by(id=self.post_id).all()) <= 0:
+    if len(session.query(Company).filter_by(companyId=self.post_id).all()) <= 0:
       session.close()
       raise CompanyNotFoundError()
 
-    company = session.query(Company).filter_by(id=self.post_id).one()
+    company = session.query(Company).filter_by(companyId=self.post_id).one()
     schema = CompanySchema()
     company = schema.dump(company)
 
