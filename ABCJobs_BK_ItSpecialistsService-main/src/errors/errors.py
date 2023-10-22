@@ -24,7 +24,7 @@ class ItSpecialistNotFoundError(ApiError):
 
 class ItSpecialistUserIdAlreadyExistis(ApiError):
     code = 409
-    description = "It Specialists with the same User Id already exists"
+    description = "It Specialist with the same User Id already exists"
 
 class ExternalError(ApiError):
     code = 422 # Default
