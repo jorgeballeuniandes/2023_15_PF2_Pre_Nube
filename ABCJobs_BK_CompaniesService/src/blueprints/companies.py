@@ -13,7 +13,7 @@ companies_blueprint = Blueprint('companies', __name__)
 @companies_blueprint.route('/companies', methods = ['POST'])
 def create():
     auth_info = Authenticate(auth_token()).execute()
-    company = CreateCompany(data= request.get_json(), userId = auth_info['id'], token = auth_token()).execute()
+    company = CreateCompany(data= request.get_json(), userid = auth_info['id'], token = auth_token()).execute()
     return jsonify(company), 201
 
 @companies_blueprint.route('/companies', methods = ['GET'])
