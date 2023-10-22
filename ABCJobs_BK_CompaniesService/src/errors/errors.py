@@ -29,3 +29,7 @@ class ExternalError(ApiError):
     def __init__(self, code):
         self.code = code
 
+class CompanyAlreadyExists(ApiError):
+    code = 409
+    description = "Company already exists"
+

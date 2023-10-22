@@ -3,11 +3,14 @@ from src.session import Session, engine
 from src.models.model import Base
 from src.blueprints.companies import companies_blueprint
 from src.errors.errors import ApiError
+from flask_cors import CORS
 
 application = Flask(__name__)
 application.register_blueprint(companies_blueprint)
 
 Base.metadata.create_all(engine)
+
+CORS(application)
 
 @application.errorhandler(ApiError)
 def handle_exception(err):
